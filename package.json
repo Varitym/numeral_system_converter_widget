@@ -1,0 +1,23 @@
+{
+  "name": "numeral_system_converter_widget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "tailwindcss build src/styles.css -o public/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Varitym/numeral_system_converter_widget.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Varitym/numeral_system_converter_widget/issues"
+  },
+  "homepage": "https://github.com/Varitym/numeral_system_converter_widget#readme",
+  "dependencies": {
+    "tailwindcss": "^2.1.2"
+  }
+}
