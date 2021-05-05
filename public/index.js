@@ -1,44 +1,39 @@
 
-// function convert(){
-//     const inputNumSystem = document.getElementById("inputSystem").value;
-//     const outputNumSystem = document.getElementById("outputSystem").value;
-//     const data = document.getElementById("inputData").value;
-//     console.log(inputSystem);
-
-
-// }
-
-function decimalToTernary(liczba)
-{
-
-     let system = document.getElementById("outputSystem").value;
-     let reszta = liczba % system;
-     if(liczba > 1) decimalToTernary (liczba / system);
-     console.log(reszta);
-     return;
-}
-
-function convert(){
+function toDecimal(){
     let system = document.getElementById("inputSystem").value;
     let number = document.getElementById("inputData").value;
-    // let docelowy = document.getElementById("outputSystem").value;
     let numString = "";
     numString = number;
     let numDecimal = parseInt(numString, system);
-    toBinary(numDecimal);
+
+    convert(numDecimal);
 }
 
-function toBinary(numDecimal){
+function convert(numDecimal){
     let system = document.getElementById("outputSystem").value;
     let liczba = numDecimal;
     let numberArr = [];
-    
-    while(liczba>1){
-        let numString = "";
-        numberArr.push(Math.floor(liczba%2));
-        numString+= liczba%2;
-        liczba=liczba/2;
+    let output = "";
+
+    if(system==16){
+        toHex(numDecimal);
     }
-    numberArr.reverse();
-    console.log(numberArr);
+    else{
+        while(liczba>1){
+            let numString = "";
+            numberArr.push(Math.floor(liczba%system));
+            numString+= liczba%system;
+            liczba=liczba/system;
+        }
+        numberArr.reverse();
+        output = numberArr.join("");
+        outputHTML = document.getElementById("output");
+        outputHTML.innerHTML = output;
+    }
+}
+function toHex(numDecimal){
+    hexString = (numDecimal.toString(16)).toUpperCase();
+    console.log(hexString);
+    output = document.getElementById("output");
+    output.innerHTML = hexString;
 }
