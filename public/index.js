@@ -5,35 +5,53 @@ function toDecimal(){
     let numString = "";
     numString = number;
     let numDecimal = parseInt(numString, system);
-
+    
+    if(check(system)==true){
     convert(numDecimal);
+    }
+    else{
+        outputHTML = document.getElementById("output");
+        outputHTML.innerHTML = "Type in valid input numeral system (2-16)!";
+    }
 }
 
 function convert(numDecimal){
     let system = document.getElementById("outputSystem").value;
-    let liczba = numDecimal;
+    let inputNumber = numDecimal;
     let numberArr = [];
     let output = "";
 
     if(system==16){
         toHex(numDecimal);
     }
-    else{
-        while(liczba>1){
+    else if(check(system)==true){
+        while(inputNumber>1){
             let numString = "";
-            numberArr.push(Math.floor(liczba%system));
-            numString+= liczba%system;
-            liczba=liczba/system;
+            numberArr.push(Math.floor(inputNumber%system));
+            numString+= inputNumber%system;
+            inputNumber=inputNumber/system;
         }
         numberArr.reverse();
         output = numberArr.join("");
         outputHTML = document.getElementById("output");
         outputHTML.innerHTML = output;
     }
+    else{
+        outputHTML = document.getElementById("output");
+        outputHTML.innerHTML = "Type in valid output numeral system (2-16)!";
+    }
+
 }
 function toHex(numDecimal){
+
     hexString = (numDecimal.toString(16)).toUpperCase();
-    console.log(hexString);
     output = document.getElementById("output");
     output.innerHTML = hexString;
+}
+
+function check(system){
+    if(system >= 2 && system <= 16)
+        return true;
+    else
+        return false;
 }
